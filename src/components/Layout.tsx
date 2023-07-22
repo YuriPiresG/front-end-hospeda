@@ -24,19 +24,39 @@ export default function Layout() {
       <div className="bg-[#F5F7F8] w-[3rem] h-screen flex justify-center">
         <ul>
           <li>
-            <img src={homeIcon} alt="" className="mt-[1.75rem]" />
+            <img
+              src={homeIcon}
+              alt=""
+              className="mt-[1.75rem] hover:cursor-pointer"
+            />
           </li>
           <li>
-            <img src={calendarIcon} alt="" className="mt-[2.5rem]" />
+            <img
+              src={calendarIcon}
+              alt=""
+              className="mt-[2.5rem] hover:cursor-pointer"
+            />
           </li>
           <li>
-            <img src={moneyIcon} alt="" className="mt-[2.5rem]" />
+            <img
+              src={moneyIcon}
+              alt=""
+              className="mt-[2.5rem] hover:cursor-pointer"
+            />
           </li>
           <li>
-            <img src={chartIcon} alt="" className="mt-[2.5rem]" />
+            <img
+              src={chartIcon}
+              alt=""
+              className="mt-[2.5rem] hover:cursor-pointer"
+            />
           </li>
           <li>
-            <img src={tagIcon} alt="" className="mt-[2.5rem]" />
+            <img
+              src={tagIcon}
+              alt=""
+              className="mt-[2.5rem] hover:cursor-pointer"
+            />
           </li>
         </ul>
       </div>
