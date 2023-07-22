@@ -5,11 +5,12 @@ import calendarIcon from "../assets/CalendarBlank.svg";
 import moneyIcon from "../assets/CurrencyDollar.svg";
 import chartIcon from "../assets/ChartPie.svg";
 import tagIcon from "../assets/Tag.svg";
+import { Outlet } from "react-router-dom";
 
 export default function Layout() {
   return (
     <>
-      <header className="bg-[#ECEEF0] h-[6rem]">
+      <nav className="bg-[#ECEEF0] h-[6rem]">
         <div className="flex justify-between mx-[2rem] py-[1.5rem]">
           <img src={hospedaLogo} alt="Logo da Hospeda Eventos" />
           <img
@@ -18,7 +19,8 @@ export default function Layout() {
             className="w-[2.5rem] h-[2.5rem]"
           />
         </div>
-      </header>
+        <Outlet />
+      </nav>
       <div className="bg-[#F5F7F8] w-[3rem] h-screen flex justify-center">
         <ul>
           <li>
