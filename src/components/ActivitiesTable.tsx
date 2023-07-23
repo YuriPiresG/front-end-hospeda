@@ -5,7 +5,7 @@ import mapPinIcon from "../assets/MapPin.svg";
 import dotIcon from "../assets/DotsThree.svg";
 
 export default function ActivitiesTable() {
-  const { data: activities, isLoading } = useGetActivities();
+  const { data: activities } = useGetActivities();
   console.log(activities);
 
   return (
@@ -38,7 +38,7 @@ export default function ActivitiesTable() {
                       alt="ícone de calendário"
                       className=""
                     />
-                    {activity?.initialDate}
+                    {activity?.initialHour} / {activity?.initialDate}
                   </p>
                   <p className="flex ml-[1rem]">
                     <img

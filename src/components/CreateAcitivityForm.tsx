@@ -1,10 +1,16 @@
 import { useForm } from "react-hook-form";
+import { useCreateActivity } from "../hooks/useCreateActivity";
 
 export default function CreateAcitivityForm() {
+  const { mutateAsync } = useCreateActivity();
+
   const { register, handleSubmit } = useForm();
 
-  function handleCreateActivity(data: any) {
+  async function handleCreateActivity(data: any) {
+    data.privacy = data.privacy ? "PRIVATE" : "PUBLIC";
     console.log(data);
+    await mutateAsync(data);
+    window.location.pathname = "/"
   }
   return (
     <>
@@ -25,13 +31,13 @@ export default function CreateAcitivityForm() {
                 type="text"
                 placeholder="Nome do evento"
                 id="name"
-                className="placeholder:pl-2 mt-[0.5rem] w-[50rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent"
+                className="pl-4 mt-[0.5rem] w-[48.5rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent"
                 {...register("name")}
               />
             </div>
             <div className="mt-[1rem]">
               <label className="font-roboto text-[#171d35a3] text-[0.875rem]">
-                Descrição do evento
+                Privacidade do evento
               </label>
               <br />
               <label className="relative inline-flex items-center cursor-pointer mt-[0.875rem]">
@@ -39,11 +45,11 @@ export default function CreateAcitivityForm() {
                   type="checkbox"
                   value=""
                   className="sr-only peer"
-                  {...register("privacity")}
+                  {...register("privacy")}
                 />
 
                 <div className="w-14 h-7 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-                <span className="ml-3 text-sm font-medium text-gray-900">
+                <span className="ml-3 text-base text-gray-900">
                   O evento será privado?
                 </span>
               </label>
@@ -55,7 +61,7 @@ export default function CreateAcitivityForm() {
               <textarea
                 placeholder="Descrição"
                 id="description"
-                className="placeholder:pl-2 mt-[0.5rem] w-[50rem] h-[10rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent resize-none"
+                className="pl-4 pt-4 mt-[0.5rem] w-[48.5rem] h-[10rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent resize-none"
                 {...register("description")}
               />
             </div>
@@ -76,7 +82,7 @@ export default function CreateAcitivityForm() {
                   type="text"
                   placeholder="12345-678"
                   id="cep"
-                  className="placeholder:pl-2 mt-[0.5rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent"
+                  className="pl-4 mt-[0.5rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent"
                   {...register("cep")}
                 />
               </div>
@@ -88,7 +94,7 @@ export default function CreateAcitivityForm() {
                   type="number"
                   placeholder="123"
                   id="streetNumber"
-                  className="placeholder:pl-2 mt-[0.5rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent"
+                  className="pl-4 mt-[0.5rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent"
                   {...register("streetNumber")}
                 />
               </div>
@@ -101,7 +107,7 @@ export default function CreateAcitivityForm() {
                 type="text"
                 placeholder="Endereço do evento"
                 id="address"
-                className="placeholder:pl-2 mt-[0.5rem] w-[50rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent"
+                className="pl-4 mt-[0.5rem] w-[48.5rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent"
                 {...register("address")}
               />
             </div>
@@ -115,7 +121,7 @@ export default function CreateAcitivityForm() {
                   type="text"
                   placeholder="Complemento(não obrigatório)"
                   id="additionalInfo"
-                  className="placeholder:pl-2 mt-[0.5rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent"
+                  className="pl-4 mt-[0.5rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent"
                   {...register("additionalInfo")}
                 />
               </div>
@@ -127,7 +133,7 @@ export default function CreateAcitivityForm() {
                   type="text"
                   placeholder="Bairro onde ocorrerá o evento"
                   id="neighborhood"
-                  className="placeholder:pl-2 mt-[0.5rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent"
+                  className="pl-4 mt-[0.5rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent"
                   {...register("neighborhood")}
                 />
               </div>
@@ -142,7 +148,7 @@ export default function CreateAcitivityForm() {
                   type="text"
                   placeholder="Cidade onde acontecerá o evento"
                   id="city"
-                  className="placeholder:pl-2 mt-[0.5rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent"
+                  className="pl-4 mt-[0.5rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent"
                   {...register("city")}
                 />
               </div>
@@ -154,7 +160,7 @@ export default function CreateAcitivityForm() {
                   type="text"
                   placeholder="Estado onde acontecerá o evento"
                   id="state"
-                  className="placeholder:pl-2 mt-[0.5rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent"
+                  className="pl-4 mt-[0.5rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent"
                   {...register("state")}
                 />
               </div>
@@ -178,7 +184,7 @@ export default function CreateAcitivityForm() {
                   placeholder="Data do evento"
                   id="date"
                   className="mt-[0.5rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171d35] focus:border-transparent appearance"
-                  {...register("date")}
+                  {...register("initialDate")}
                 />
               </div>
               <div className="grid">
@@ -189,7 +195,7 @@ export default function CreateAcitivityForm() {
                   type="time"
                   id="time"
                   className="mt-[0.5rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171d35] focus:border-transparent"
-                  {...register("time")}
+                  {...register("initialHour")}
                 />
               </div>
             </div>

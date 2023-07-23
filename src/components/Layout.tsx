@@ -1,13 +1,14 @@
 import hospedaLogo from "../assets/hospedaLogo.svg";
 import userIcon from "../assets/userIcon.svg";
 import homeIcon from "../assets/House.svg";
-import calendarIcon from "../assets/CalendarBlank.svg";
+import calendarIcon from "../assets/CalendarBlankWhite.svg";
 import moneyIcon from "../assets/CurrencyDollar.svg";
 import chartIcon from "../assets/ChartPie.svg";
 import tagIcon from "../assets/Tag.svg";
 import { Outlet } from "react-router-dom";
 
 export default function Layout() {
+  
   return (
     <>
       <nav className="bg-[#ECEEF0] h-[6rem]">
@@ -27,21 +28,21 @@ export default function Layout() {
             <img
               src={homeIcon}
               alt=""
-              className="mt-[1.75rem] hover:cursor-pointer"
+              className=" mt-[1.75rem] hover:cursor-pointer"
             />
           </li>
-          <li>
+          <li className="rounded-lg w-[2rem] h-[2rem] bg-[#2C68F4]">
             <img
               src={calendarIcon}
               alt=""
-              className="mt-[2.5rem] hover:cursor-pointer"
+              className="pl-1 pt-1 mt-[2rem] hover:cursor-pointer rounded-lg"
             />
           </li>
           <li>
             <img
               src={moneyIcon}
               alt=""
-              className="mt-[2.5rem] hover:cursor-pointer"
+              className="mt-[2rem] hover:cursor-pointer"
             />
           </li>
           <li>
