@@ -1,8 +1,9 @@
-import { QueryClient, QueryClientProvider } from "react-query";
+
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import ActivitiesDisplay from "./components/ActivitiesDisplay";
 import Layout from "./components/Layout";
 import CreateActivityPage from "./components/CreateActivityPage";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();
 

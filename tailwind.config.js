@@ -4,7 +4,6 @@ export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
-    "./node_modules/flowbite/**/*.js",
   ],
   theme: {
     extend: {
@@ -14,7 +13,7 @@ export default {
       colors: {
         searchColor: "#171d351f",
       },
-      plugins: [require("flowbite/plugin")],
+      plugins: [],
     },
   },
 };
