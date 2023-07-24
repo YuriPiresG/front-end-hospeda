@@ -1,12 +1,11 @@
-import  { useState } from "react";
+import { useState } from "react";
 import hotelsImg from "../assets/hotels.jpeg";
 import { Activity, useGetActivities } from "../hooks/useGetActivities";
 import calendarBlueIcon from "../assets/CalendarBlankBlue.svg";
 import mapPinIcon from "../assets/MapPin.svg";
 import dotIcon from "../assets/DotsThree.svg";
 import DeleteActivity from "./DeleteActivity";
-
-
+import UpdateActivity from "./UpdateActivity";
 
 export default function ActivitiesTable() {
   const { data: activities } = useGetActivities();
@@ -14,7 +13,11 @@ export default function ActivitiesTable() {
   const [isMenuOpen, setIsMenuOpen] = useState(
     Array(activities?.length).fill(false)
   );
+
   const [selectedActivityToDelete, setSelectedActivityToDelete] =
+    useState<Activity | null>(null);
+
+  const [selectedActivityToUpdate, setSelectedActivityToUpdate] =
     useState<Activity | null>(null);
 
   const handleMenuClick = (activityId: number) => {
@@ -55,7 +58,7 @@ export default function ActivitiesTable() {
                         className=""
                       />
                       {activity?.initialHour as any} |{" "}
-                      {new Date(activity?.initialDate).toDateString()}
+                      {(activity?.initialDate)}
                     </p>
                     <p className="flex ml-[1rem]">
                       <img
@@ -92,12 +95,15 @@ export default function ActivitiesTable() {
                 />
                 {isMenuOpen[activity.id] && (
                   <div className="absolute right-[7rem] grid justify-center w-[5rem] h-[5rem] mt-1 mr-1 bg-[#e3e4e7] rounded-[0.5rem]">
-                    <button className="border-b-[1px] border-black">
+                    <button
+                      className="border-b-[1px] border-black"
+                      onClick={() => setSelectedActivityToUpdate(activity)}
+                    >
                       <p className="text-[#171D35] text-[0.875rem] hover:scale-110">
                         Editar
                       </p>
                     </button>
-                   
+
                     <button
                       onClick={() => setSelectedActivityToDelete(activity)}
                     >
@@ -120,6 +126,16 @@ export default function ActivitiesTable() {
             setSelectedActivityToDelete(null);
           }}
           activity={selectedActivityToDelete}
+        />
+      )}
+
+      {selectedActivityToUpdate && (
+        <UpdateActivity
+          open={true}
+          close={() => {
+            setSelectedActivityToUpdate(null);
+          }}
+          activity={selectedActivityToUpdate}
         />
       )}
     </>
