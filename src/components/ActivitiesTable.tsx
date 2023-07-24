@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import hotelsImg from "../assets/hotels.jpeg";
 import { Activity, useGetActivities } from "../hooks/useGetActivities";
 import calendarBlueIcon from "../assets/CalendarBlankBlue.svg";
 import mapPinIcon from "../assets/MapPin.svg";
 import dotIcon from "../assets/DotsThree.svg";
 import DeleteActivity from "./DeleteActivity";
+
+
 
 export default function ActivitiesTable() {
   const { data: activities } = useGetActivities();
@@ -52,7 +54,7 @@ export default function ActivitiesTable() {
                         alt="ícone de calendário"
                         className=""
                       />
-                      {activity?.initialHour} |{" "}
+                      {activity?.initialHour as any} |{" "}
                       {new Date(activity?.initialDate).toDateString()}
                     </p>
                     <p className="flex ml-[1rem]">
@@ -66,8 +68,8 @@ export default function ActivitiesTable() {
                   </div>
                 </div>
               </td>
-              <td className="border-gray-300 px-4 py-2">00/500</td>
-              <td className="border-gray-300 px-4 py-2 relative">
+              <td className="border-gray-300 px-8 py-2">00/500</td>
+              <td className="border-gray-300 px-4 py-2">
                 <p
                   className={`text-center pt-1 w-[6rem] h-[2.2rem] ${
                     activity?.privacy === "Público"
