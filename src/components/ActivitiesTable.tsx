@@ -85,7 +85,7 @@ export default function ActivitiesTable() {
               <td className="border-gray-300 px-4 py-2 relative">
                 <img
                   src={dotIcon}
-                  alt=""
+                  alt="botão para abrir menu de opções"
                   className={`cursor-pointer mt-1 mr-1 ${
                     isMenuOpen[activity.id] &&
                     "bg-[#e3e4e7] rounded-[0.5rem] transform rotate-180 transition-all"

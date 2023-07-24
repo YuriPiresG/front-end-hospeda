@@ -41,9 +41,9 @@ export default function UpdateActivity(props: Props) {
     <>
       {props.open && (
         <div className="fixed top-0 bottom-0 left-0 right-0 z-50 bg-[#000000c9] flex justify-center items-center overflow-y-auto">
-          <div className="bg-white rounded-lg w-[50rem] h-[55rem] p-6 flex flex-col justify-center items-center">
+          <div className="bg-white rounded-lg w-[50rem] sm:h-[100rem]  p-6 flex flex-col sm:grid justify-center items-center">
             <button
-              className="absolute top-10 right-[35rem]"
+              className="absolute top-[4rem] right-[35rem] sm:top-2 sm:right-5"
               onClick={props.close}
             >
               <img
@@ -54,11 +54,11 @@ export default function UpdateActivity(props: Props) {
             </button>
             <form
               onSubmit={handleSubmit(handleUpdateActivity)}
-              className="grid grid-cols-2 font-roboto"
+              className="grid grid-cols-2 sm:grid-cols-1 font-roboto sm:h-[10rem] items-center justify-center sm:mb-[45rem]"
             >
               <label
                 htmlFor="name"
-                className="text-[#171d35] text-[1.5rem] mb-[1rem]"
+                className="text-[#171d35] text-[1.5rem] mb-[1rem] sm:mb-0"
               >
                 Nome do evento
               </label>
@@ -72,7 +72,7 @@ export default function UpdateActivity(props: Props) {
 
               <label
                 htmlFor="privacy"
-                className="text-[#171d35] text-[1.5rem] mb-[1rem]"
+                className="text-[#171d35] text-[1.5rem] mb-[1rem] sm:mb-0"
               >
                 Privacidade
               </label>
@@ -88,7 +88,7 @@ export default function UpdateActivity(props: Props) {
 
               <label
                 htmlFor="description"
-                className="text-[#171d35] text-[1.5rem] mb-[1rem]"
+                className="text-[#171d35] text-[1.5rem] mb-[1rem] sm:mb-0"
               >
                 Descrição
               </label>
@@ -101,7 +101,7 @@ export default function UpdateActivity(props: Props) {
 
               <label
                 htmlFor="cep"
-                className="text-[#171d35] text-[1.5rem] mb-[1rem]"
+                className="text-[#171d35] text-[1.5rem] mb-[1rem] sm:mb-0"
               >
                 CEP
               </label>
@@ -115,7 +115,7 @@ export default function UpdateActivity(props: Props) {
 
               <label
                 htmlFor="streetNumber"
-                className="text-[#171d35] text-[1.5rem] mb-[1rem]"
+                className="text-[#171d35] text-[1.5rem] mb-[1rem] sm:mb-0"
               >
                 Número
               </label>
@@ -129,7 +129,7 @@ export default function UpdateActivity(props: Props) {
 
               <label
                 htmlFor="address"
-                className="text-[#171d35] text-[1.5rem] mb-[1rem]"
+                className="text-[#171d35] text-[1.5rem] mb-[1rem] sm:mb-0"
               >
                 Endereço
               </label>
@@ -143,7 +143,7 @@ export default function UpdateActivity(props: Props) {
 
               <label
                 htmlFor="additionalInfo"
-                className="text-[#171d35] text-[1.5rem] mb-[1rem]"
+                className="text-[#171d35] text-[1.5rem] mb-[1rem] sm:mb-0"
               >
                 Complemento
               </label>
@@ -157,7 +157,7 @@ export default function UpdateActivity(props: Props) {
 
               <label
                 htmlFor="neighborhood"
-                className="text-[#171d35] text-[1.5rem] mb-[1rem]"
+                className="text-[#171d35] text-[1.5rem] mb-[1rem] sm:mb-0"
               >
                 Bairro
               </label>
@@ -171,7 +171,7 @@ export default function UpdateActivity(props: Props) {
 
               <label
                 htmlFor="city"
-                className="text-[#171d35] text-[1.5rem] mb-[1rem]"
+                className="text-[#171d35] text-[1.5rem] mb-[1rem] sm:mb-0"
               >
                 Cidade
               </label>
@@ -185,7 +185,7 @@ export default function UpdateActivity(props: Props) {
 
               <label
                 htmlFor="state"
-                className="text-[#171d35] text-[1.5rem] mb-[1rem]"
+                className="text-[#171d35] text-[1.5rem] mb-[1rem] sm:mb-0"
               >
                 Estado
               </label>
@@ -199,7 +199,7 @@ export default function UpdateActivity(props: Props) {
 
               <label
                 htmlFor="initialDate"
-                className="text-[#171d35] text-[1.5rem] mb-[1rem]"
+                className="text-[#171d35] text-[1.5rem] mb-[1rem] sm:mb-0"
               >
                 Data
               </label>
@@ -212,7 +212,7 @@ export default function UpdateActivity(props: Props) {
 
               <label
                 htmlFor="initialHour"
-                className="text-[#171d35] text-[1.5rem] mb-[1rem]"
+                className="text-[#171d35] text-[1.5rem] mb-[1rem] sm:mb-0"
               >
                 Hora
               </label>
@@ -225,9 +225,9 @@ export default function UpdateActivity(props: Props) {
 
               <button
                 type="submit"
-                className="bg-[#FF6D00] rounded-md w-[10rem] h-[2.5rem] text-white text-[1rem] pl-4 mt-[0.5rem] mt-4 hover:bg-[#5a2702] transition-all hover:scale-125"
+                className="bg-[#FF6D00] rounded-md w-[10rem] h-[2.5rem] text-white text-[1rem] pl-4  hover:bg-[#5a2702] transition-all hover:scale-125"
               >
-                {isLoading ? "Atualizando..." : "Atualizar"}
+                <span className="mr-[1rem]"> {isLoading ? "Atualizando..." : "Atualizar"}</span>
               </button>
             </form>
           </div>

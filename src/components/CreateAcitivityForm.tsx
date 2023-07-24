@@ -10,20 +10,20 @@ export default function CreateAcitivityForm() {
     data.privacy = data.privacy ? "Privado" : "Público";
     console.log(data);
     await mutateAsync(data);
-    window.location.pathname = "/"
+    window.location.pathname = "/";
   }
   return (
     <>
-      <div className="w-[57rem] bg-white rounded-xl shadow-lg font-roboto pb-[10rem]">
-        <div className="mt-[3rem] ml-[3rem]">
-          <form onSubmit={handleSubmit(handleCreateActivity)}>
+      <div className="w-[57rem] sm:w-[25rem] bg-white rounded-xl shadow-lg font-roboto pb-[10rem]">
+        <div className="mt-[3rem] ml-[3rem] sm:ml-[1rem]">
+          <form onSubmit={handleSubmit(handleCreateActivity)} className="">
             <fieldset>
               <legend className="text-[#171D35] font-bold text-[1.5rem]">
                 Informações do evento
               </legend>
             </fieldset>
 
-            <div className="mt-[2rem] block">
+            <div className="mt-[2rem] block sm:grid">
               <label className="font-roboto text-[#171d35a3] text-[0.875rem]">
                 Nome do evento
               </label>
@@ -31,7 +31,7 @@ export default function CreateAcitivityForm() {
                 type="text"
                 placeholder="Nome do evento"
                 id="name"
-                className="pl-4 mt-[0.5rem] w-[48.5rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent"
+                className="pl-4 mt-[0.5rem] sm:w-[20rem] w-[48.5rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent"
                 {...register("name")}
               />
             </div>
@@ -61,19 +61,19 @@ export default function CreateAcitivityForm() {
               <textarea
                 placeholder="Descrição"
                 id="description"
-                className="pl-4 pt-4 mt-[0.5rem] w-[48.5rem] h-[10rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent resize-none"
+                className="pl-4 pt-4 mt-[0.5rem] sm:w-[23rem] w-[48.5rem] h-[10rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent resize-none"
                 {...register("description")}
               />
             </div>
 
-            <hr className="my-[2rem] w-[50rem]" />
+            <hr className="my-[2rem] w-[50rem] sm:w-[23rem]" />
             <fieldset>
               <legend className="text-[#171D35] font-bold text-[1.5rem]">
                 Local do evento
               </legend>
             </fieldset>
 
-            <div className="mt-[2rem] flex gap-2">
+            <div className="mt-[2rem] flex sm:grid gap-2">
               <div className="grid">
                 <label className="font-roboto text-[#171d35a3] text-[0.875rem]">
                   CEP
@@ -82,7 +82,7 @@ export default function CreateAcitivityForm() {
                   type="text"
                   placeholder="12345-678"
                   id="cep"
-                  className="pl-4 mt-[0.5rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent"
+                  className="pl-4 mt-[0.5rem] sm:w-[20rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent"
                   {...register("cep")}
                 />
               </div>
@@ -94,25 +94,25 @@ export default function CreateAcitivityForm() {
                   type="number"
                   placeholder="123"
                   id="streetNumber"
-                  className="pl-4 mt-[0.5rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent"
+                  className="pl-4 mt-[0.5rem] sm:w-[20rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent"
                   {...register("streetNumber")}
                 />
               </div>
             </div>
             <div className="mt-[2rem] grid">
-              <label className="font-roboto text-[#171d35a3] text-[0.875rem]">
+              <label className="font-roboto text-[#171d35a3] text-[0.875rem] ">
                 Endereço
               </label>
               <input
                 type="text"
                 placeholder="Endereço do evento"
                 id="address"
-                className="pl-4 mt-[0.5rem] w-[48.5rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent"
+                className="pl-4 mt-[0.5rem] sm:w-[20rem] w-[48.5rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent"
                 {...register("address")}
               />
             </div>
 
-            <div className="mt-[2rem] flex gap-2">
+            <div className="mt-[2rem] flex sm:grid gap-2">
               <div className="grid">
                 <label className="font-roboto text-[#171d35a3] text-[0.875rem]">
                   Complemento
@@ -121,7 +121,7 @@ export default function CreateAcitivityForm() {
                   type="text"
                   placeholder="Complemento(não obrigatório)"
                   id="additionalInfo"
-                  className="pl-4 mt-[0.5rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent"
+                  className="pl-4 mt-[0.5rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent sm:w-[20rem]"
                   {...register("additionalInfo")}
                 />
               </div>
@@ -133,13 +133,13 @@ export default function CreateAcitivityForm() {
                   type="text"
                   placeholder="Bairro onde ocorrerá o evento"
                   id="neighborhood"
-                  className="pl-4 mt-[0.5rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent"
+                  className="pl-4 mt-[0.5rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent sm:w-[20rem]"
                   {...register("neighborhood")}
                 />
               </div>
             </div>
 
-            <div className="mt-[1.75rem] flex gap-2">
+            <div className="mt-[1.75rem] flex sm:grid gap-2">
               <div className="grid">
                 <label className="font-roboto text-[#171d35a3] text-[0.875rem]">
                   Cidade
@@ -148,7 +148,7 @@ export default function CreateAcitivityForm() {
                   type="text"
                   placeholder="Cidade onde acontecerá o evento"
                   id="city"
-                  className="pl-4 mt-[0.5rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent"
+                  className="pl-4 mt-[0.5rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent sm:w-[20rem]"
                   {...register("city")}
                 />
               </div>
@@ -160,13 +160,13 @@ export default function CreateAcitivityForm() {
                   type="text"
                   placeholder="Estado onde acontecerá o evento"
                   id="state"
-                  className="pl-4 mt-[0.5rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent"
+                  className="pl-4 mt-[0.5rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent sm:w-[20rem]"
                   {...register("state")}
                 />
               </div>
             </div>
 
-            <hr className="my-[2rem] w-[50rem]" />
+            <hr className="my-[2rem] w-[50rem] sm:w-[23rem]" />
 
             <fieldset>
               <legend className="text-[#171D35] font-bold text-[1.5rem]">
@@ -174,7 +174,7 @@ export default function CreateAcitivityForm() {
               </legend>
             </fieldset>
 
-            <div className="mt-[2rem] flex gap-2">
+            <div className="mt-[2rem] flex sm:grid gap-2">
               <div className="grid">
                 <label className="font-roboto text-[#171d35a3] text-[0.875rem]">
                   Data
@@ -183,7 +183,7 @@ export default function CreateAcitivityForm() {
                   type="date"
                   placeholder="Data do evento"
                   id="date"
-                  className="mt-[0.5rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171d35] focus:border-transparent appearance"
+                  className="mt-[0.5rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171d35] focus:border-transparent appearance sm:w-[20rem]"
                   {...register("initialDate")}
                 />
               </div>
@@ -194,14 +194,14 @@ export default function CreateAcitivityForm() {
                 <input
                   type="time"
                   id="time"
-                  className="mt-[0.5rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171d35] focus:border-transparent"
+                  className="mt-[0.5rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171d35] focus:border-transparent sm:w-[20rem]"
                   {...register("initialHour")}
                 />
               </div>
             </div>
             <button
               type="submit"
-              className="bg-[#2C68F4] text-[#FFFFFF] rounded-[2rem] w-[14rem] h-[3.5rem] ml-[35rem] mt-[3rem]"
+              className="bg-[#2C68F4] text-[#FFFFFF] rounded-[2rem] w-[14rem] h-[3.5rem] ml-[35rem] mt-[3rem] sm:ml-0"
             >
               Cadastrar
             </button>

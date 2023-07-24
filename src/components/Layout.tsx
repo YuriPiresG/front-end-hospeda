@@ -11,7 +11,7 @@ export default function Layout() {
   
   return (
     <>
-      <nav className="bg-[#ECEEF0] h-[6rem] sm:w-[26rem]">
+      <nav className="bg-[#ECEEF0] h-[6rem] sm:w-full">
         <div className="flex justify-between mx-[2rem] py-[1.5rem]">
           <img src={hospedaLogo} alt="Logo da Hospeda Eventos" />
           <img

@@ -22,7 +22,7 @@ export default function DeleteActivity(props: Props) {
       <div className="bg-[#000000c9] fixed top-0 bottom-0 left-0 right-0 z-50 flex justify-center items-center">
         <div className="bg-white rounded-lg w-[40rem] h-[20rem] flex flex-col justify-center items-center">
           <button
-            className="absolute top-[20.5rem] right-[39.5rem] "
+            className="absolute top-[20.5rem] right-[39.5rem] sm:top-[25] sm:right-[2rem] "
             onClick={props.close}
           >
             <div>

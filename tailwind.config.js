@@ -5,6 +5,7 @@ export default {
   theme: {
     screens: {
       sm: { max: "640px" },
+      md: { max: "768px" },
     },
     extend: {
       fontFamily: {
