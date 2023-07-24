@@ -7,11 +7,11 @@ export default function ActivitiesDisplay() {
     <>
       <main className=" pl-[5.563rem] pt-[2rem] mr-[5rem]">
         <h1 className="font-roboto font-bold text-[2rem] ">Meus eventos</h1>
-        <div className="mt-2 flex  justify-between">
+        <div className="mt-2 lg:flex justify-between">
           <SearchBar />
           <CreateActivityBtn />
         </div>
-        <div className="flex justify-center">
+        <div className="lg:flex justify-center">
           <ActivitiesTable />
         </div>
       </main>
