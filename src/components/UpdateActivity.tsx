@@ -4,6 +4,25 @@ import { useUpdateActivity } from "../hooks/useUpdateActivity";
 import xIcon from "../assets/xIcon.svg";
 import { Privacy } from "../constants/privacy";
 import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+const updateActivitySchema = z.object({
+  name: z.string().min(3, { message: "Nome muito curto" }),
+  description: z.string().min(3, { message: "Descrição muito curta" }),
+  privacy: z.boolean(),
+  cep: z.string().min(8, { message: "CEP inválido" }),
+  streetNumber: z.string().min(1, { message: "Número inválido" }),
+  address: z.string().min(3, { message: "Endereço inválido" }),
+  additionalInfo: z.string().min(3, { message: "Complemento inválido" }),
+  neighborhood: z.string().min(3, { message: "Bairro inválido" }),
+  city: z.string().min(3, { message: "Cidade inválida" }),
+  state: z.string().min(2, { message: "Estado inválido" }),
+  initialDate: z.string().min(3, { message: "Data inválida" }),
+  initialHour: z.string().min(3, { message: "Horário inválido" }),
+});
+
+type UpdateActivityForm = z.infer<typeof updateActivitySchema>;
 
 interface Props {
   activity: Activity;
@@ -27,12 +46,17 @@ export default function UpdateActivity(props: Props) {
 
   const { mutateAsync, isLoading } = useUpdateActivity();
 
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<UpdateActivityForm>({
+    resolver: zodResolver(updateActivitySchema),
+  });
 
   async function handleUpdateActivity(data: any) {
     console.log(typeof data);
     data.id = activityId;
-    console.log(data);
     await mutateAsync(data);
     props.close();
   }
@@ -227,7 +251,9 @@ export default function UpdateActivity(props: Props) {
                 type="submit"
                 className="bg-[#FF6D00] rounded-md w-[10rem] h-[2.5rem] text-white text-[1rem] pl-4  hover:bg-[#5a2702] transition-all hover:scale-125"
               >
-                <span className="mr-[1rem]"> {isLoading ? "Atualizando..." : "Atualizar"}</span>
+                <span className="mr-[1rem]">
+                  {isLoading ? "Atualizando..." : "Atualizar"}
+                </span>
               </button>
             </form>
           </div>

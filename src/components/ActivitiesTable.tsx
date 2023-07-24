@@ -11,7 +11,6 @@ import deleteIcon from "../assets/deleteIcon.svg";
 
 export default function ActivitiesTable() {
   const { data: activities } = useGetActivities();
-  console.log(activities);
   const [isMenuOpen, setIsMenuOpen] = useState(
     Array(activities?.length).fill(false)
   );
