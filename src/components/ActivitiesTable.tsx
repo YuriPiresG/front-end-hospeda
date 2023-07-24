@@ -6,6 +6,8 @@ import mapPinIcon from "../assets/MapPin.svg";
 import dotIcon from "../assets/DotsThree.svg";
 import DeleteActivity from "./DeleteActivity";
 import UpdateActivity from "./UpdateActivity";
+import penIcon from "../assets/penIcon.svg";
+import deleteIcon from "../assets/deleteIcon.svg";
 
 export default function ActivitiesTable() {
   const { data: activities } = useGetActivities();
@@ -97,20 +99,21 @@ export default function ActivitiesTable() {
                     onClick={() => handleMenuClick(activity.id)}
                   />
                   {isMenuOpen[activity.id] && (
-                    <div className="absolute sm:right-[3rem] right-[7rem] grid justify-center w-[5rem] h-[5rem] mt-1 mr-1 bg-[#e3e4e7] rounded-[0.5rem]">
+                    <div className="absolute z-10 sm:right-[3rem] right-[7rem] grid justify-center w-[5rem] h-[5rem] mt-1 mr-1 bg-[#e3e4e7] rounded-[0.5rem]">
                       <button
                         className="border-b-[1px] border-black"
                         onClick={() => setSelectedActivityToUpdate(activity)}
                       >
-                        <p className="text-[#171D35] text-[0.875rem] hover:scale-110">
-                          Editar
+                        <p className="text-[#171D35] text-[0.875rem] hover:scale-110 flex gap-2">
+                          <img src={penIcon} alt="Ícone de lápis" /> Editar
                         </p>
                       </button>
 
                       <button
                         onClick={() => setSelectedActivityToDelete(activity)}
                       >
-                        <p className="text-[#171D35] text-[0.875rem] hover:scale-110">
+                        <p className="text-[#FF4E3A] text-[0.875rem] hover:scale-110 flex gap-2">
+                          <img src={deleteIcon} alt="Ícone de lata de lixo" />
                           Excluir
                         </p>
                       </button>

@@ -1,10 +1,35 @@
 import { useForm } from "react-hook-form";
 import { useCreateActivity } from "../hooks/useCreateActivity";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+const createAcitivtySchema = z.object({
+  name: z.string().min(3, { message: "Nome muito curto" }),
+  description: z.string().min(3, { message: "Descrição muito curta" }),
+  privacy: z.boolean(),
+  cep: z.string().min(8, { message: "CEP inválido" }),
+  streetNumber: z.string().min(1, { message: "Número inválido" }),
+  address: z.string().min(3, { message: "Endereço inválido" }),
+  additionalInfo: z.string().min(3, { message: "Complemento inválido" }),
+  neighborhood: z.string().min(3, { message: "Bairro inválido" }),
+  city: z.string().min(3, { message: "Cidade inválida" }),
+  state: z.string().min(2, { message: "Estado inválido" }),
+  initialDate: z.string().min(3, { message: "Data inválida" }),
+  initialHour: z.string().min(3, { message: "Horário inválido" }),
+});
+
+type CreateActivityFormData = z.infer<typeof createAcitivtySchema>;
 
 export default function CreateAcitivityForm() {
   const { mutateAsync } = useCreateActivity();
 
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<CreateActivityFormData>({
+    resolver: zodResolver(createAcitivtySchema),
+  });
 
   async function handleCreateActivity(data: any) {
     data.privacy = data.privacy ? "Privado" : "Público";
@@ -34,6 +59,10 @@ export default function CreateAcitivityForm() {
                 className="pl-4 mt-[0.5rem] sm:w-[20rem] w-[48.5rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent"
                 {...register("name")}
               />
+              <br />
+              {errors.name && (
+                <span className="text-red-500">{errors.name.message}</span>
+              )}
             </div>
             <div className="mt-[1rem]">
               <label className="font-roboto text-[#171d35a3] text-[0.875rem]">
@@ -47,6 +76,9 @@ export default function CreateAcitivityForm() {
                   className="sr-only peer"
                   {...register("privacy")}
                 />
+                {errors.privacy && (
+                  <span className="text-red-500">{errors.privacy.message}</span>
+                )}
 
                 <div className="w-14 h-7 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
                 <span className="ml-3 text-base text-gray-900">
@@ -64,6 +96,11 @@ export default function CreateAcitivityForm() {
                 className="pl-4 pt-4 mt-[0.5rem] sm:w-[23rem] w-[48.5rem] h-[10rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent resize-none"
                 {...register("description")}
               />
+              {errors.description && (
+                <span className="text-red-500">
+                  {errors.description.message}
+                </span>
+              )}
             </div>
 
             <hr className="my-[2rem] w-[50rem] sm:w-[23rem]" />
@@ -85,6 +122,9 @@ export default function CreateAcitivityForm() {
                   className="pl-4 mt-[0.5rem] sm:w-[20rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent"
                   {...register("cep")}
                 />
+                {errors.cep && (
+                  <span className="text-red-500">{errors.cep.message}</span>
+                )}
               </div>
               <div className="grid">
                 <label className="font-roboto text-[#171d35a3] text-[0.875rem]">
@@ -97,6 +137,11 @@ export default function CreateAcitivityForm() {
                   className="pl-4 mt-[0.5rem] sm:w-[20rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent"
                   {...register("streetNumber")}
                 />
+                {errors.streetNumber && (
+                  <span className="text-red-500">
+                    {errors.streetNumber.message}
+                  </span>
+                )}
               </div>
             </div>
             <div className="mt-[2rem] grid">
@@ -110,6 +155,9 @@ export default function CreateAcitivityForm() {
                 className="pl-4 mt-[0.5rem] sm:w-[20rem] w-[48.5rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent"
                 {...register("address")}
               />
+              {errors.address && (
+                <span className="text-red-500">{errors.address.message}</span>
+              )}
             </div>
 
             <div className="mt-[2rem] flex sm:grid gap-2">
@@ -124,6 +172,11 @@ export default function CreateAcitivityForm() {
                   className="pl-4 mt-[0.5rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent sm:w-[20rem]"
                   {...register("additionalInfo")}
                 />
+                {errors.additionalInfo && (
+                  <span className="text-red-500">
+                    {errors.additionalInfo.message}
+                  </span>
+                )}
               </div>
               <div className="grid">
                 <label className="font-roboto text-[#171d35a3] text-[0.875rem]">
@@ -136,6 +189,11 @@ export default function CreateAcitivityForm() {
                   className="pl-4 mt-[0.5rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent sm:w-[20rem]"
                   {...register("neighborhood")}
                 />
+                {errors.neighborhood && (
+                  <span className="text-red-500">
+                    {errors.neighborhood.message}
+                  </span>
+                )}
               </div>
             </div>
 
@@ -151,6 +209,9 @@ export default function CreateAcitivityForm() {
                   className="pl-4 mt-[0.5rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent sm:w-[20rem]"
                   {...register("city")}
                 />
+                {errors.city && (
+                  <span className="text-red-500">{errors.city.message}</span>
+                )}
               </div>
               <div className="grid">
                 <label className="font-roboto text-[#171d35a3] text-[0.875rem]">
@@ -163,6 +224,9 @@ export default function CreateAcitivityForm() {
                   className="pl-4 mt-[0.5rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent sm:w-[20rem]"
                   {...register("state")}
                 />
+                {errors.state && (
+                  <span className="text-red-500">{errors.state.message}</span>
+                )}
               </div>
             </div>
 
@@ -186,6 +250,11 @@ export default function CreateAcitivityForm() {
                   className="mt-[0.5rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171d35] focus:border-transparent appearance sm:w-[20rem]"
                   {...register("initialDate")}
                 />
+                {errors.initialDate && (
+                  <span className="text-red-500">
+                    {errors.initialDate.message}
+                  </span>
+                )}
               </div>
               <div className="grid">
                 <label className="font-roboto text-[#171d35a3] text-[0.875rem]">
@@ -197,6 +266,11 @@ export default function CreateAcitivityForm() {
                   className="mt-[0.5rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171d35] focus:border-transparent sm:w-[20rem]"
                   {...register("initialHour")}
                 />
+                {errors.initialHour && (
+                  <span className="text-red-500">
+                    {errors.initialHour.message}
+                  </span>
+                )}
               </div>
             </div>
             <button
