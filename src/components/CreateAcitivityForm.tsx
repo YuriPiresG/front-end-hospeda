@@ -7,7 +7,7 @@ export default function CreateAcitivityForm() {
   const { register, handleSubmit } = useForm();
 
   async function handleCreateActivity(data: any) {
-    data.privacy = data.privacy ? "PRIVATE" : "PUBLIC";
+    data.privacy = data.privacy ? "Privado" : "Público";
     console.log(data);
     await mutateAsync(data);
     window.location.pathname = "/"
