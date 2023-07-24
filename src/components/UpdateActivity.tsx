@@ -30,8 +30,8 @@ export default function UpdateActivity(props: Props) {
   const { register, handleSubmit } = useForm();
 
   async function handleUpdateActivity(data: any) {
+    console.log(typeof data);
     data.id = activityId;
-    data.privacy = data.privacy ? "Privado" : "Público";
     console.log(data);
     await mutateAsync(data);
     props.close();
@@ -42,7 +42,10 @@ export default function UpdateActivity(props: Props) {
       {props.open && (
         <div className="fixed top-0 bottom-0 left-0 right-0 z-50 bg-[#000000c9] flex justify-center items-center overflow-y-auto">
           <div className="bg-white rounded-lg w-[50rem] h-[55rem] p-6 flex flex-col justify-center items-center">
-            <button className="absolute top-10 right-[35rem]" onClick={props.close}>
+            <button
+              className="absolute top-10 right-[35rem]"
+              onClick={props.close}
+            >
               <img
                 src={xIcon}
                 alt=""
