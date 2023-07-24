@@ -28,7 +28,7 @@ export default function ActivitiesTable() {
   };
   return (
     <>
-      <table className="min-w-[350px] text-left mt-[2rem] w-[120rem] font-roboto">
+      <table className="text-left mt-[2rem] w-[110rem] font-roboto sm:text-[0.8rem]">
         <thead>
           <tr className="text-[#171d357a]">
             <th className="bg-[#eee] px-4 py-2 rounded-tl-md">Evento</th>
@@ -43,22 +43,21 @@ export default function ActivitiesTable() {
               <td className="border-gray-300 px-4 py-2 flex">
                 <img
                   src={hotelsImg}
-                  alt=""
-                  className="w-[6.65rem] h-[5rem] rounded mr-2"
+                  alt="foto de hotel genérico"
+                  className="w-[6.65rem] h-[5rem] rounded mr-2 sm:hidden"
                 />
-                <div>
-                  <p className="font-bold text-[1rem] text-[#171D35]">
+                <div className="sm:flex sm:text-center sm:items-center">
+                  <p className="font-bold text-[1rem] text-[#171D35] ">
                     {activity?.name}
                   </p>
-                  <div className="flex mt-[1rem]">
+                  <div className="flex mt-[1rem] sm:grid">
                     <p className="flex">
                       <img
                         src={calendarBlueIcon}
                         alt="ícone de calendário"
-                        className=""
+                        className="sm:flex"
                       />
-                      {activity?.initialHour as any} |{" "}
-                      {(activity?.initialDate)}
+                      {activity?.initialHour as any} | {activity?.initialDate}
                     </p>
                     <p className="flex ml-[1rem]">
                       <img
@@ -74,7 +73,7 @@ export default function ActivitiesTable() {
               <td className="border-gray-300 px-8 py-2">00/500</td>
               <td className="border-gray-300 px-4 py-2">
                 <p
-                  className={`text-center pt-1 w-[6rem] h-[2.2rem] ${
+                  className={`text-center pt-1 sm:w-[3.5rem] w-[6rem] h-[2.2rem] ${
                     activity?.privacy === "Público"
                       ? "bg-[#C2ED79] rounded-[1.125rem] border-[2px] border-[#498D12] "
                       : "bg-[#ED9C79] rounded-[1.125rem] border-[2px] border-[#8D3012]"
@@ -94,7 +93,7 @@ export default function ActivitiesTable() {
                   onClick={() => handleMenuClick(activity.id)}
                 />
                 {isMenuOpen[activity.id] && (
-                  <div className="absolute right-[7rem] grid justify-center w-[5rem] h-[5rem] mt-1 mr-1 bg-[#e3e4e7] rounded-[0.5rem]">
+                  <div className="absolute sm:right-[3rem] right-[7rem] grid justify-center w-[5rem] h-[5rem] mt-1 mr-1 bg-[#e3e4e7] rounded-[0.5rem]">
                     <button
                       className="border-b-[1px] border-black"
                       onClick={() => setSelectedActivityToUpdate(activity)}

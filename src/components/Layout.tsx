@@ -11,7 +11,7 @@ export default function Layout() {
   
   return (
     <>
-      <nav className="bg-[#ECEEF0] h-[6rem]">
+      <nav className="bg-[#ECEEF0] h-[6rem] sm:w-[26rem]">
         <div className="flex justify-between mx-[2rem] py-[1.5rem]">
           <img src={hospedaLogo} alt="Logo da Hospeda Eventos" />
           <img
@@ -22,7 +22,7 @@ export default function Layout() {
         </div>
         <Outlet />
       </nav>
-      <div className="bg-[#F5F7F8] w-[3rem] h-screen flex justify-center">
+      <div className="bg-[#F5F7F8] w-[3rem] h-screen flex justify-center sm:hidden">
         <ul>
           <li>
             <img

@@ -12,7 +12,7 @@ export default function SearchBar() {
       <input
         type="text"
         placeholder="Buscar eventos"
-        className="bg-searchColor lg:w-[30em] sm:w-[3rem] h-[2.5rem] text-black placeholder-[#A4A4A4] text-[1rem] font-roboto font-normal pl-[1rem] rounded-e-[0.75rem] border-y border-r border-searchColor"
+        className="bg-searchColor w-[30em] sm:w-[10rem] h-[2.5rem] text-black placeholder-[#A4A4A4] text-[1rem] font-roboto font-normal pl-[1rem] rounded-e-[0.75rem] border-y border-r border-searchColor"
       />
     </form>
   );
