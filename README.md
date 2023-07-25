@@ -31,5 +31,6 @@ To get started with the project, follow these steps:
 3. Copy the env.example to an .env
 4. Run npm run dev
 
-## Environment
+## Environments
+
 - Development: https://front-end-hospeda.vercel.app
