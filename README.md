@@ -1,6 +1,12 @@
-# Hospeda Eventos README
+# Hospeda Eventos
 
-This is a React + Vite project with two pages: `/` for the activities view and `/create-activity` for the form to create new activities.
+This is a React + TypeScript + Vite project with two pages: `/` for the activities view and `/create-activity` for the form to create new activities.
+
+## Features
+
+- The activities view shows a list of activities with their name, date, and time.
+- The activities view has a button to create a new activity, delete or edit an existing one.
+- The form to create a new activity was also used to update it, because the due date was very close.
 
 ## Technologies
 
