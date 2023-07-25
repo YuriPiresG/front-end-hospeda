@@ -1,5 +1,5 @@
-import CreateAcitivityForm from "./CreateAcitivityForm";
-import CreateActivityHeader from "./CreateActivityHeader";
+import CreateAcitivityForm from "../components/CreateAcitivityForm";
+import CreateActivityHeader from "../components/CreateActivityHeader";
 
 export default function CreateActivityPage() {
   return (

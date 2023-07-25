@@ -93,7 +93,9 @@ export default function ActivitiesTable() {
                         : "bg-[#ED9C79] rounded-[1.125rem] border-[2px] border-[#8D3012]"
                     }`}
                   >
-                    {activity?.privacy}
+                    {activity?.privacy === Privacy.PUBLIC
+                      ? "Público"
+                      : "Privado"}
                   </p>
                 </td>
                 <td className="border-gray-300 px-4 py-2 relative">

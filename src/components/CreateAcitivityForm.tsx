@@ -15,7 +15,7 @@ const createAcitivtySchema = z.object({
   cep: z.string().min(8, { message: "CEP inválido" }),
   streetNumber: z.string().min(1, { message: "Número inválido" }),
   address: z.string().min(3, { message: "Endereço inválido" }),
-  additionalInfo: z.string().min(3, { message: "Complemento inválido" }),
+  additionalInfo: z.string().optional(),
   neighborhood: z.string().min(3, { message: "Bairro inválido" }),
   city: z.string().min(3, { message: "Cidade inválida" }),
   state: z.string().min(2, { message: "Estado inválido" }),
@@ -23,24 +23,35 @@ const createAcitivtySchema = z.object({
   initialHour: z.string().min(3, { message: "Horário inválido" }),
 });
 
-type CreateActivityFormData = z.infer<typeof createAcitivtySchema>;
+export type CreateActivityFormData = z.infer<typeof createAcitivtySchema>;
 
-export default function CreateAcitivityForm() {
-  const { mutateAsync, isLoading } = useCreateActivity();
+interface Props {
+  defaultValues?: CreateActivityFormData;
+  onSubmit?: (data: CreateActivityFormData) => void;
+}
+
+export default function CreateAcitivityForm({
+  defaultValues,
+  onSubmit,
+}: Props) {
+  const { mutateAsync } = useCreateActivity();
 
   const {
     register,
     handleSubmit,
     watch,
     setValue,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<CreateActivityFormData>({
     resolver: zodResolver(createAcitivtySchema),
+    defaultValues,
   });
   const navigate = useNavigate();
   const cep = watch("cep");
 
   async function handleCreateActivity(data: CreateActivityFormData) {
+    if (onSubmit) return onSubmit(data);
+
     await mutateAsync({
       ...data,
       privacy: data.privacy ? Privacy.PRIVATE : Privacy.PUBLIC,
@@ -297,10 +308,16 @@ export default function CreateAcitivityForm() {
             </div>
             <button
               type="submit"
-              disabled={isLoading}
+              disabled={isSubmitting}
               className="bg-[#2C68F4] text-[#FFFFFF] rounded-[2rem] w-[14rem] h-[3.5rem] ml-[35rem] mt-[3rem] sm:ml-0 flex justify-center items-center"
             >
-              {isLoading ? <Spinner /> : "Criar evento"}
+              {isSubmitting ? (
+                <Spinner />
+              ) : onSubmit ? (
+                "Atualizar evento"
+              ) : (
+                "Criar evento"
+              )}
             </button>
           </form>
         </div>

@@ -1,6 +1,6 @@
-import ActivitiesTable from "./ActivitiesTable";
-import CreateActivityBtn from "./CreateActivityBtn";
-import SearchBar from "./SearchBar";
+import ActivitiesTable from "../components/ActivitiesTable";
+import CreateActivityBtn from "../components/CreateActivityBtn";
+import SearchBar from "../components/SearchBar";
 
 export default function ActivitiesDisplay() {
   return (

@@ -2,14 +2,14 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { api } from "../lib/api";
 import { Privacy } from "../constants/privacy";
 
-interface CreateActivity {
+export interface CreateActivity {
   name: string;
   privacy: Privacy;
   description: string;
   cep: string;
   streetNumber: number;
   address: string;
-  additionalInfo: string;
+  additionalInfo?: string;
   neighborhood: string;
   city: string;
   state: string;
