@@ -2,6 +2,11 @@ import { useForm } from "react-hook-form";
 import { useCreateActivity } from "../hooks/useCreateActivity";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Privacy } from "../constants/privacy";
+import { useCep } from "../hooks/useCep";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { Spinner } from "./Spinner";
 
 const createAcitivtySchema = z.object({
   name: z.string().min(3, { message: "Nome muito curto" }),
@@ -21,22 +26,38 @@ const createAcitivtySchema = z.object({
 type CreateActivityFormData = z.infer<typeof createAcitivtySchema>;
 
 export default function CreateAcitivityForm() {
-  const { mutateAsync } = useCreateActivity();
+  const { mutateAsync, isLoading } = useCreateActivity();
 
   const {
     register,
     handleSubmit,
+    watch,
+    setValue,
     formState: { errors },
   } = useForm<CreateActivityFormData>({
     resolver: zodResolver(createAcitivtySchema),
   });
+  const navigate = useNavigate();
+  const cep = watch("cep");
 
-  async function handleCreateActivity(data: any) {
-    data.privacy = data.privacy ? "Privado" : "Público";
-    console.log(data);
-    await mutateAsync(data);
-    window.location.pathname = "/";
+  async function handleCreateActivity(data: CreateActivityFormData) {
+    await mutateAsync({
+      ...data,
+      privacy: data.privacy ? Privacy.PRIVATE : Privacy.PUBLIC,
+      streetNumber: Number(data.streetNumber),
+    });
+
+    navigate("/");
   }
+
+  const { data: addressData, isLoading: isCepLoading } = useCep(cep);
+  useEffect(() => {
+    if (!addressData) return;
+    setValue("address", addressData?.logradouro);
+    setValue("neighborhood", addressData?.bairro);
+    setValue("city", addressData?.localidade);
+    setValue("state", addressData?.uf);
+  }, [addressData]);
   return (
     <>
       <div className="w-[57rem] sm:w-[25rem] bg-white rounded-xl shadow-lg font-roboto pb-[10rem]">
@@ -119,6 +140,7 @@ export default function CreateAcitivityForm() {
                   type="text"
                   placeholder="12345-678"
                   id="cep"
+                  disabled={isCepLoading}
                   className="pl-4 mt-[0.5rem] sm:w-[20rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171D35] focus:border-transparent"
                   {...register("cep")}
                 />
@@ -275,9 +297,10 @@ export default function CreateAcitivityForm() {
             </div>
             <button
               type="submit"
-              className="bg-[#2C68F4] text-[#FFFFFF] rounded-[2rem] w-[14rem] h-[3.5rem] ml-[35rem] mt-[3rem] sm:ml-0"
+              disabled={isLoading}
+              className="bg-[#2C68F4] text-[#FFFFFF] rounded-[2rem] w-[14rem] h-[3.5rem] ml-[35rem] mt-[3rem] sm:ml-0 flex justify-center items-center"
             >
-              Cadastrar
+              {isLoading ? <Spinner /> : "Criar evento"}
             </button>
           </form>
         </div>

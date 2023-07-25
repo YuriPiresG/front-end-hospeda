@@ -52,9 +52,21 @@ export default function UpdateActivity(props: Props) {
     formState: { errors },
   } = useForm<UpdateActivityForm>({
     resolver: zodResolver(updateActivitySchema),
+    defaultValues: {
+      name: name,
+      description: description,
+      privacy: privacy === Privacy.PRIVATE ? true : false,
+      cep: cep,
+      streetNumber: streetNumber,
+      address: address,
+      additionalInfo: additionalInfo,
+      neighborhood: neighborhood,
+      city: city,
+      state: state,
+    },
   });
 
-  async function handleUpdateActivity(data: any) {
+  async function handleUpdateActivity(data: UpdateActivityForm) {
     console.log(typeof data);
     data.id = activityId;
     await mutateAsync(data);

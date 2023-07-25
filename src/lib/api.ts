@@ -1,8 +1,7 @@
 import axios from "axios";
 
-
 export const api = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: (import.meta.env.VITE_API_URL as string) || "http://localhost:3000",
 });
 api.interceptors.request.use((config) => {
   const accessToken = localStorage.getItem("access_token");
@@ -24,9 +23,7 @@ api.interceptors.response.use(
     if (Array.isArray(error.response.data?.message)) {
       return error(error.response.data?.message[0]);
     }
-    error(
-      error.response.data?.message || error.message || "Erro inesperado"
-    );
+    error(error.response.data?.message || error.message || "Erro inesperado");
     return Promise.reject(error);
   }
 );
