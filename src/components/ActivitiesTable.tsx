@@ -12,7 +12,7 @@ import { Spinner } from "./Spinner";
 import { Privacy } from "../constants/privacy";
 
 export default function ActivitiesTable() {
-  const { data: activities, isLoading } = useGetActivities();
+  const { data: activities, isLoading, isRefetching } = useGetActivities();
   const [isMenuOpen, setIsMenuOpen] = useState(
     Array(activities?.length).fill(false)
   );
@@ -49,6 +49,11 @@ export default function ActivitiesTable() {
             </tr>
           </thead>
           <tbody>
+            {isRefetching && (
+              <div className="flex justify-center py-4">
+                <Spinner />
+              </div>
+            )}
             {activities?.map((activity) => (
               <tr className="border" key={activity.id}>
                 <td className="border-gray-300 px-4 py-2 flex">
