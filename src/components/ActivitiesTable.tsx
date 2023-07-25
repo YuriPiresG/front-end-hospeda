@@ -38,8 +38,8 @@ export default function ActivitiesTable() {
   }
   return (
     <>
-      <div className="sm:overflow-x-auto sm:ml-[3rem]">
-        <table className="text-left mt-[2rem] w-[110rem] sm:w-[10rem] font-roboto sm:text-[0.8rem]">
+      <div className="sm:overflow-x-auto">
+        <table className=" text-left mt-[2rem] w-full  font-roboto sm:text-[0.8rem]">
           <thead>
             <tr className="text-[#171d357a]">
               <th className="bg-[#eee] px-4 py-2 rounded-tl-md">Evento</th>

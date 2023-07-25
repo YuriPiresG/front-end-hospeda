@@ -5,13 +5,13 @@ import SearchBar from "../components/SearchBar";
 export default function ActivitiesDisplay() {
   return (
     <>
-      <main className=" pl-[5.563rem] sm:pl-1 pt-[2rem] mr-[5rem]">
-        <h1 className="font-roboto font-bold text-[2rem] ">Meus eventos</h1>
+      <main className="px-4 sm:pl-4 pt-8 pl-32">
+        <h1 className="font-roboto font-bold text-[2rem]">Meus eventos</h1>
         <div className="mt-2 flex justify-between sm:grid">
           <SearchBar />
           <CreateActivityBtn />
         </div>
-        <div className="flex justify-center">
+        <div className="flex flex-col">
           <ActivitiesTable />
         </div>
       </main>
