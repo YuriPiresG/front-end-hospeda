@@ -20,6 +20,7 @@ Before running the project, ensure you have the following installed on your syst
 
 - Node.js (https://nodejs.org) (v18.13.0)
 - npm (Node Package Manager)
+- git
 
 ## Getting Started
 
