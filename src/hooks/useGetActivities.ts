@@ -14,8 +14,8 @@ export interface Activity {
   neighborhood: string;
   city: string;
   state: string;
-  initialDate: Date;
-  initialHour: Date;
+  initialDate: string;
+  initialHour: string;
 }
 
 export const useGetActivities = () => {

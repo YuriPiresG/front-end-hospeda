@@ -8,9 +8,11 @@ import DeleteActivity from "./DeleteActivity";
 import UpdateActivity from "./UpdateActivity";
 import penIcon from "../assets/penIcon.svg";
 import deleteIcon from "../assets/deleteIcon.svg";
+import { Spinner } from "./Spinner";
+import { Privacy } from "../constants/privacy";
 
 export default function ActivitiesTable() {
-  const { data: activities } = useGetActivities();
+  const { data: activities, isLoading } = useGetActivities();
   const [isMenuOpen, setIsMenuOpen] = useState(
     Array(activities?.length).fill(false)
   );
@@ -27,6 +29,13 @@ export default function ActivitiesTable() {
       [activityId]: !prevMenuState[activityId],
     }));
   };
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-[80vh]">
+        <Spinner />
+      </div>
+    );
+  }
   return (
     <>
       <div className="sm:overflow-x-auto sm:ml-[3rem]">
@@ -59,7 +68,7 @@ export default function ActivitiesTable() {
                           alt="ícone de calendário"
                           className="sm:hidden"
                         />
-                        {activity?.initialHour as any} | {activity?.initialDate}
+                        {activity?.initialHour} | {activity?.initialDate}
                       </p>
                       <p className="flex ml-[1rem]">
                         <img
@@ -79,7 +88,7 @@ export default function ActivitiesTable() {
                 <td className="border-gray-300 px-4 py-2">
                   <p
                     className={`text-center pt-1 sm:w-[3.5rem] w-[6rem] h-[2.2rem] ${
-                      activity?.privacy === "Público"
+                      activity?.privacy === Privacy.PUBLIC
                         ? "bg-[#C2ED79] rounded-[1.125rem] border-[2px] border-[#498D12] "
                         : "bg-[#ED9C79] rounded-[1.125rem] border-[2px] border-[#8D3012]"
                     }`}

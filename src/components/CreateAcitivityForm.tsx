@@ -269,7 +269,7 @@ export default function CreateAcitivityForm() {
                   type="date"
                   placeholder="Data do evento"
                   id="date"
-                  className="mt-[0.5rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171d35] focus:border-transparent appearance sm:w-[20rem]"
+                  className="mt-[0.5rem] p-2 w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171d35] focus:border-transparent appearance sm:w-[20rem]"
                   {...register("initialDate")}
                 />
                 {errors.initialDate && (
@@ -285,7 +285,7 @@ export default function CreateAcitivityForm() {
                 <input
                   type="time"
                   id="time"
-                  className="mt-[0.5rem] w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171d35] focus:border-transparent sm:w-[20rem]"
+                  className="mt-[0.5rem] p-2 w-[24rem] h-[3rem] rounded-xl border-[0.2px] border-[#bbb] focus:outline-none focus:ring-2 focus:ring-[#171d35] focus:border-transparent sm:w-[20rem]"
                   {...register("initialHour")}
                 />
                 {errors.initialHour && (
